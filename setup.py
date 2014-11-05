@@ -3,18 +3,9 @@ from setuptools import setup
 
 import mobiledetect
 
+
 def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
-
-
-# Hack to prevent stupid TypeError: 'NoneType' object is not callable error on
-# exit of python setup.py test # in multiprocessing/util.py _exit_function when
-# running python setup.py test (see
-# http://www.eby-sarna.com/pipermail/peak/2010-May/003357.html)
-try:
-    import multiprocessing
-except ImportError:
-    pass
 
 setup(
     name = "pymobiledetect",
@@ -24,8 +15,11 @@ setup(
     description = "Detect mobile and tablet browsers",
     license = "AGPL",
     keywords = "mobile tabled detect browser",
-    url = "http://packages.python.org/an_example_pypi_project",
+    url = "https://bitbucket.org/trbs/pymobiledetect/overview",
     packages=['mobiledetect', 'mobiledetect.test'],
+    package_data={
+        'mobiledetect': ['Mobile_Detect.json'],
+        'mobiledetect.test': ['test_user_agents.json']},
     test_suite='nose.collector',
     long_description=read('README'),
     classifiers=[
@@ -40,4 +34,3 @@ setup(
         "Topic :: Software Development :: Libraries",
     ],
 )
-

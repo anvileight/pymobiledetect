@@ -3,7 +3,7 @@ WSGI and Django Middlware for mobiledetect
 """
 
 
-class BaseMobileDetectMiddleware(object):
+class BaseMobileDetectMiddleware():
     pass
 
 
@@ -13,4 +13,3 @@ class WSGIMobileDetectMiddleware(BaseMobileDetectMiddleware):
 
 class DjangoMobileDetectMiddleware(BaseMobileDetectMiddleware):
     pass
-
