@@ -94,7 +94,7 @@ class MobileDetect(object):
             self.useragent = ""
 
         if self.request is not None:
-            for http_header, matches in MOBILE_HTTP_HEADERS.iteritems():
+            for http_header, matches in MOBILE_HTTP_HEADERS.items():
                 if not http_header in request.META:
                     continue
 
@@ -137,7 +137,7 @@ class MobileDetect(object):
     def device_hash(self):
         if not hasattr(self, '_device_hash'):
             hsh = sha1(self.useragent)
-            for k, v in self.headers.iteritems():
+            for k, v in self.headers.items():
                 hsh.update("%s:%s" % (k, v))
             self._device_hash = hsh.hexdigest()
         return self._device_hash
